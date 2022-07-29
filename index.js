@@ -90,14 +90,7 @@ const commandEntryQuestions = [
 }
 ]
 
-function simpleQueryExample()
-{
-    inquirer.prompt()
-    db.query("SELECT first_name, last_name FROM employee;", function(err, results) {
-        console.table(results);
-    });
-}
-
+// Our view functions to get a table of the current information in each table
 function viewAllEmployees()
 {
     db.query("SELECT * FROM employee;", function(err, results) {
@@ -117,7 +110,6 @@ function viewAllDeparments()
         {
             console.error(err);
         }
-        // console.info(results);
         console.table(results);
     });
 }
@@ -129,11 +121,37 @@ function viewAllRoles()
         {
             console.error(err);
         }
-        // console.info(results);
         console.table(results);
     });
 }
 
+const addDepartment = async(data) => {
+    await inquirer.prompt(addDeptQuestions)
+    await db.query("INSERT INTO department (dept_name) VALUES (" + data.deptName + ");", function(err, results) {
+        if(err != null)
+        {
+            console.error(err);
+        }
+        // console.info(results);
+        console.table(results); 
+    });
+}
+
+function addRole() {
+
+}
+
+function addEmployee() {
+    
+}
+
+function updateEmployee() {
+    // Needs to check it's updating the right employee by employee id and set role to the role id based on which 
+    // word option is chosen
+    db.query("UPDATE employee SET role_id=${} WHERE id=id;")
+}
+
+// Should run the command related to the response to the opening menu
 function runCommmands(data)
 {
     if(data.command == 'View All Employees')
@@ -149,24 +167,35 @@ function runCommmands(data)
         return viewAllRoles();
     }
     else if(data.command == "Add a Department")
-    {}
+    {
+        return addDepartment();
+    }
     else if(data.command == "Add a Role")
-    {}
+    {
+        // return addRole();
+    }
     else if(data.command == "Add a Employee")
-    {}
+    {
+        // return addEmployee();
+    }
     else if(data.command == "Update an Employee")
-    {}
+    {
+        // return updateEmployee();
+    }
     else if(data.command == "Exit")
     {
         repeat = false;
     }
 }
 
+// Should loop our entry question and commands until user chooses to exit
 const commandLoop = async() =>
 {
+    console.log("We are in the loop!")
     var repeat = true;
     while(repeat)
     {
+        console.log("We are repeating!")
         repeat = await inquirer.prompt(commandEntryQuestions)
         .then(runCommmands)
     }
@@ -177,8 +206,10 @@ function init()
 
 }
 
+// Closes our connection to MySQL server
 function cleanup()
 {
+    console.log("We are ending!");
     db.end();
 }
 
