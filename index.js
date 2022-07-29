@@ -119,6 +119,14 @@ function runCommmands(data)
     {}
     else if(data.command == "View All Roles")
     {}
+    else if(data.command == "Add a Department")
+    {}
+    else if(data.command == "Add a Role")
+    {}
+    else if(data.command == "Add a Employee")
+    {}
+    else if(data.command == "Update an Employee")
+    {}
 }
 
 const commandLoop = async() =>
