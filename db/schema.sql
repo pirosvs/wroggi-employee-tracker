@@ -5,13 +5,13 @@ USE employee_list_db;
 
 DROP TABLE IF EXISTS department;
 CREATE TABLE department (
-    id INT AUTO INCREMENT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     dept_name VARCHAR(30) NOT NULL
 );
 
 DROP TABLE IF EXISTS employee_role;
 CREATE TABLE employee_role (
-    id INT AUTO INCREMENT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(30) NOT NULL,
     salary DECIMAL,
     dept_id INT,
@@ -22,11 +22,11 @@ CREATE TABLE employee_role (
 
 DROP TABLE IF EXISTS employee;
 CREATE TABLE employee (
-    id INT AUTO INCREMENT PRIMARY KEY,
+    id INT PRIMARY KEY,
     first_name VARCHAR(30) NOT NULL,
     last_name VARCHAR(30) NOT NULL,
+    manager_id INT,
     role_id INT NOT NULL, 
     FOREIGN KEY (role_id)
-    REFERENCES role(id)
-    manager_id INT
+    REFERENCES employee_role(id)
 );
