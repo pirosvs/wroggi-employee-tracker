@@ -1,9 +1,10 @@
 const inquirer = require('inquirer');
 const mysql = require('mysql2');
 const cTable = require('console.table');
+// const util = require('util');
 
 // create the connection to database
-const con = mysql.createConnection({
+const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'password',
@@ -125,23 +126,38 @@ function viewAllRoles()
     });
 }
 
-const addDepartment = async(data) => {
+// Our add functions to add information (rows) to our tables
+const addDepartment = async (data) => {
+    // var sql = "INSERT INTO department (dept_name) VALUES ?";
+    // var values = data.deptName;
     await inquirer.prompt(addDeptQuestions)
-    await con.promise().query("INSERT INTO department (dept_name) VALUES ($[data.deptName]);");
+    await db.query("INSERT INTO department (dept_name) VALUES ?", [data.deptName], function(err, results) {
+        if(err != null)
+        {
+            console.error(err);
+        }
+        console.table(results);
+    });
 }
 
+// Other add functions for role and employee are not filled as I could not get the one I was using as an example, addDepartment, 
+    // to work with any method
 function addRole() {
-
+// Should be similar to addDepartment but for our roles table
+    inquirer.prompt(addRoleQuestions)
 }
 
 function addEmployee() {
-
+// Should be similar to other add roles but for our employee table, also must be able to properly take in
+    // role id based on the word being offered
+    inquirer.prompt(addEmployeeQuestions)
 }
 
+// Our update employee function to change an existing employee's role
 function updateEmployee() {
     // Needs to check it's updating the right employee by employee id and set role to the role id based on which 
     // word option is chosen
-    db.query("UPDATE employee SET role_id=$[] WHERE id=id;")
+    db.query("UPDATE employee SET role_id=[] WHERE id=id;")
 }
 
 // Should run the command related to the response to the opening menu
@@ -194,17 +210,18 @@ const commandLoop = async() =>
     }
 }
 
-function init()
-{
-
-}
+// const init = async() =>
+// {
+//     await commandLoop();
+//     await cleanup();
+// }
 
 // Closes our connection to MySQL server
 function cleanup()
 {
     console.log("We are ending!");
-    con.end();
+    db.end();
 }
 
-init();
+// init();
 commandLoop().then(cleanup);

@@ -15,7 +15,7 @@ console.table(results) });
 To show our department table in the command line.
 
 ## Credits
-Credit of course to my housemate Lyra for helping me fix some original looping and closing issues, and clearing up what was expected and some possible structure for achieving that.
+Credit of course to my housemate Lyra for helping me fix some original looping and closing issues, and clearing up what was expected and some possible structure for achieving that. Credit to Max (mdunn with AskBCS) as well for helping me figure out I was using db.query incorrectly to insert values.
 
 ## License
 This project falls under the MIT license.
