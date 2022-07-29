@@ -3,7 +3,7 @@ const mysql = require('mysql2');
 const cTable = require('console.table');
 
 // create the connection to database
-const db = mysql.createConnection({
+const con = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'password',
@@ -127,14 +127,7 @@ function viewAllRoles()
 
 const addDepartment = async(data) => {
     await inquirer.prompt(addDeptQuestions)
-    await db.query("INSERT INTO department (dept_name) VALUES (" + data.deptName + ");", function(err, results) {
-        if(err != null)
-        {
-            console.error(err);
-        }
-        // console.info(results);
-        console.table(results); 
-    });
+    await con.promise().query("INSERT INTO department (dept_name) VALUES ($[data.deptName]);");
 }
 
 function addRole() {
@@ -142,13 +135,13 @@ function addRole() {
 }
 
 function addEmployee() {
-    
+
 }
 
 function updateEmployee() {
     // Needs to check it's updating the right employee by employee id and set role to the role id based on which 
     // word option is chosen
-    db.query("UPDATE employee SET role_id=${} WHERE id=id;")
+    db.query("UPDATE employee SET role_id=$[] WHERE id=id;")
 }
 
 // Should run the command related to the response to the opening menu
@@ -210,7 +203,7 @@ function init()
 function cleanup()
 {
     console.log("We are ending!");
-    db.end();
+    con.end();
 }
 
 init();
