@@ -85,7 +85,7 @@ const commandEntryQuestions = [
     type: "list",
     message: "What would you like to do?",
     name: "command",
-    choices: ["View All Employees"]
+    choices: ["View All Employees", "View All Departments", "View All Roles", "Add a Department", "Add a Role", "Add an Employee", "Update an Employee Role"]
 }
 ]
 
@@ -115,7 +115,9 @@ function runCommmands(data)
     {
         return viewAllEmployees();
     }
-    else if(data.command == "")
+    else if(data.command == "View All Departments")
+    {}
+    else if(data.command == "View All Roles")
     {}
 }
 
