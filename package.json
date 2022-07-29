@@ -1,0 +1,21 @@
+{
+  "name": "wroggi-employee-tracker",
+  "version": "1.0.0",
+  "description": "Purpose:\r - to create and maintain an employee database using command line prompts and mysql to update and store data\r - easily keep tack of employees and employee information in one place\r - easily update that information should anything change (add new employees, drop past ones, update salary or job information, etc)\r - if we have an easier way to keep track of our employees, (what does it make easier/ more efficient)",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pirosvs/wroggi-employee-tracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pirosvs/wroggi-employee-tracker/issues"
+  },
+  "homepage": "https://github.com/pirosvs/wroggi-employee-tracker#readme"
+}
