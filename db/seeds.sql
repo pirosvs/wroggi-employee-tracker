@@ -1,17 +1,17 @@
-INSERT INTO department (id, dept_name)
+INSERT INTO department (dept_name)
 VALUES
-    ( 001, "Administration"),
-    ( 002, "Tech"),
-    ( 003, "Accounting"),
-    ( 004, "Customer Service");
+    ("Administration"),
+    ("Tech"),
+    ("Accounting"),
+    ("Customer Service");
 
-INSERT INTO employee_role (id, title, salary, dept_id)
+INSERT INTO employee_role (title, salary, dept_id)
 VALUES
-    ( 1, "Customer Outreach", 40000, 004),
-    ( 2, "Accountant", 55000, 003),
-    ( 3, "Tech Support", 55000, 002),
-    ( 4, "Controller", 70000, 001),
-    ( 5, "Receptionist", 40000, 004);
+    ("Customer Outreach", 40000, 4),
+    ("Accountant", 55000, 3),
+    ("Tech Support", 55000, 2),
+    ("Controller", 70000, 1),
+    ("Receptionist", 40000, 4);
 
 INSERT INTO employee (id, first_name, last_name, role_id, manager_id)
 VALUES
