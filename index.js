@@ -85,7 +85,8 @@ const commandEntryQuestions = [
     type: "list",
     message: "What would you like to do?",
     name: "command",
-    choices: ["View All Employees", "View All Departments", "View All Roles", "Add a Department", "Add a Role", "Add an Employee", "Update an Employee Role"]
+    choices: ["View All Employees", "View All Departments", "View All Roles", "Add a Department", "Add a Role", "Add an Employee", 
+    "Update an Employee Role", "Exit"]
 }
 ]
 
@@ -100,6 +101,30 @@ function simpleQueryExample()
 function viewAllEmployees()
 {
     db.query("SELECT * FROM employee;", function(err, results) {
+        if(err != null)
+        {
+            console.error(err);
+        }
+        // console.info(results);
+        console.table(results);
+    });
+}
+
+function viewAllDeparments()
+{
+    db.query("SELECT * FROM department;", function(err, results) {
+        if(err != null)
+        {
+            console.error(err);
+        }
+        // console.info(results);
+        console.table(results);
+    });
+}
+
+function viewAllRoles()
+{
+    db.query("SELECT * FROM employee_role;", function(err, results) {
         if(err != null)
         {
             console.error(err);
@@ -127,6 +152,10 @@ function runCommmands(data)
     {}
     else if(data.command == "Update an Employee")
     {}
+    else if(data.command == "Exit")
+    {
+        repeat = false;
+    }
 }
 
 const commandLoop = async() =>
