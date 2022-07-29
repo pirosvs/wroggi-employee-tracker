@@ -12,6 +12,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static('public'));
+app.use(routes);
+// do these not work together?
 
 // Set up the listener to host
 app.listen(PORT, () =>
