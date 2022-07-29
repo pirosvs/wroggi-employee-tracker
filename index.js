@@ -141,9 +141,13 @@ function runCommmands(data)
         return viewAllEmployees();
     }
     else if(data.command == "View All Departments")
-    {}
+    {
+        return viewAllDeparments();
+    }
     else if(data.command == "View All Roles")
-    {}
+    {
+        return viewAllRoles();
+    }
     else if(data.command == "Add a Department")
     {}
     else if(data.command == "Add a Role")
