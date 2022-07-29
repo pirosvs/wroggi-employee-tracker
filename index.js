@@ -131,7 +131,7 @@ const addDepartment = async (data) => {
     // var sql = "INSERT INTO department (dept_name) VALUES ?";
     // var values = data.deptName;
     await inquirer.prompt(addDeptQuestions)
-    await db.query("INSERT INTO department (dept_name) VALUES ?", [data.deptName], function(err, results) {
+    await db.promise().query("INSERT INTO department (dept_name) VALUES ?", [data.deptName], function(err, results) {
         if(err != null)
         {
             console.error(err);

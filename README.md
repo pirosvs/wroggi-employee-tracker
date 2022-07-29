@@ -1,5 +1,8 @@
 # wroggi-employee-tracker
 
+## Demonstration
+[https://drive.google.com/file/d/14llfgbQfTuHvtqYne2kiv6XV5XiFFgGD/view?usp=sharing]
+
 ## Description
 Purpose:
 The purpose of this project is to create and maintain an employee database using command line prompts and MySQL to update and store data for departments, roles and their associated departments and salaries, and employees (and all information related to each). By using inquirer to prompt for any information, MySQL to store that data in the relevant tables, and console table to view those tables, we can easily keep tack of company and employee information in one place. This also allows us to easily update that information should anything change (add new employees, drop past ones, update salary or job information, etc) to keep our information up to date. By making our means of storing, changing, and viewing information on our business and employees more efficient, we are able to free up some time to spend on other important tasks. This is particularly relevant given the overwhelming amount of work involved in running any business. 
